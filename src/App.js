@@ -1,3 +1,9 @@
+/**
+ * The main component of the React application
+ * @function
+ * @returns {JSX.Element} - The main React component
+ */
+
 import React, { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import Nav from "./components/Nav.js";
