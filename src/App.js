@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import Nav from "./components/Nav.js";
-import Home from "./pages/Home/Home.js";
-import UserPage from "./pages/UserPage";
+import Home from "./pages/Home/Home";
+import UserPage from "./pages/UserPage/UserPage.js";
 
 function App() {
 	useEffect(() => {
