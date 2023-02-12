@@ -12,6 +12,8 @@ import Nav from "./components/Nav.js";
 import Home from "./pages/Home/Home";
 import Gallery from "./components/Gallery.js"
 import Filter from "./components/Filter.js"
+import Cart from "./pages/Cart.js";
+import Login from "./pages/Login.js";
 
 import UserPage from "./pages/UserPage/UserPage.js";
 
@@ -49,7 +51,6 @@ function App() {
     <div className="App">
       <Nav />
       <Filter onHandleFilter={onHandleFilter} />
-      <Gallery listingsArray = {filterResults}/>
 
       <Routes>
 				<Route
@@ -58,6 +59,27 @@ function App() {
 					element={<Home listingsArray={listingsArray} />}
 				/>
 				<Route path="/user" element={<UserPage />} />
+
+        <Route
+					exact
+					path="/gallery"
+					element={<Gallery listingsArray = {filterResults}/>}
+				/>
+
+        <Route
+					exact
+					path="/cart"
+					element={<Cart />}
+				/>
+
+        <Route
+					exact
+					path="/login"
+					element={<Login />}
+				/>
+
+        
+
 			</Routes>
     </div>
   );
