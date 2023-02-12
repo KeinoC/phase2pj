@@ -1,0 +1,56 @@
+{    
+
+
+
+
+"listing" : [
+      {
+        "id" : 1,
+        "username" : "Keino",
+        "itemname" : "Rainy Day",
+        "image": "https://images.saatchiart.com/saatchi/481815/art/4054502/3124355-HSC00001-7.jpg",
+        "category" : "Painting",
+        "description" : "A really cool painting",
+        "tag1" : "modern",
+        "tag2" : "landscape",
+        "tag3" : "movement",
+        "tag4" : "harmony"
+    },
+    {
+      "id" : 2,
+      "username" : "Ziru",
+      "itemname" : "Sunny Day",
+      "image" : "https://secure.img1-fg.wfcdn.com/im/51394890/resize-h445%5Ecompr-r85/3693/36939268/Desert+Landscape+4+by+Bekim+Mehovic+-+Wrapped+Canvas+Graphic+Art.jpg",
+      "category" : "Sculpture",
+      "description" : "A really nice Sculpture",
+      "tag1" : "modern",
+      "tag2" : "landscape",
+      "tag3" : "movement",
+      "tag4" : "harmony"
+  },
+{
+    "id" : 3,
+    "username" : "Madison",
+    "itemname" : "Cloudy Day",
+    "image" : "https://i.etsystatic.com/40136679/r/il/944084/4567159723/il_794xN.4567159723_ge25.jpg",
+    "category" : "Pottery",
+    "description" : "A super dope Vase",
+    "tag1" : "modern",
+    "tag2" : "landscape",
+    "tag3" : "movement",
+    "tag4" : "harmony"
+},
+{
+  "id" : 4,
+  "username" : "Ashley",
+  "itemname" : "Windy Day",
+  "image": "https://i.etsystatic.com/31774357/r/il/97f424/3682780536/il_fullxfull.3682780536_9c3w.jpg",
+  "category" : "Painting",
+  "description" : "A really nice Sculpture",
+  "tag1" : "modern",
+  "tag2" : "landscape",
+  "tag3" : "movement",
+  "tag4" : "harmony"
+}
+    ]
+}
