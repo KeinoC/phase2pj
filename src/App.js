@@ -23,9 +23,9 @@ function App() {
 
   const navigate = useNavigate()
 
-  const [listingsArray, setListings] = useState([])
   const [filter, setFilter] = useState("All")
   const [user, setUser] = useState("")
+  const [users, setUsers] = useState([])
   const [isLoggedIn, setisLoggedIn] = useState(null)
   
   const admin = {
@@ -34,14 +34,13 @@ function App() {
   }
 
   useEffect(() => {
-    fetch("http://localhost:3200/listing")
+    fetch("http://localhost:3200/users")
     .then(response => response.json())
-    .then(data => setListings(data))
+    .then(data => setUsers(data))
   }, [])
 
-
+  
   function onHandleFilter(prevFilter) {
-    console.log(prevFilter)
     setFilter(prevFilter)
   }
 
@@ -55,18 +54,6 @@ function App() {
       console.log("Login Failed")
     }
   }
-  
-  
-  const filterResults = listingsArray?.filter(listing => {
-    if (filter === "All") {
-      return listing
-    } else {
-      return listing.category === filter
-      
-    }
-      
-  })
-
 
   return (
     <div className="App">
@@ -76,15 +63,10 @@ function App() {
 				<Route
 					exact
 					path="/"
-					element={<Home listingsArray={listingsArray} />}
+					element={<Home users={users} filter={filter}/>}
 				/>
 				<Route path="/user" element={<UserPage />} />
-
-        <Route
-					exact
-					path="/gallery"
-					element={<Gallery listingsArray = {filterResults}/>}
-				/>
+        
 
         <Route
 					exact
