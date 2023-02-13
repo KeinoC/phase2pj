@@ -23,7 +23,6 @@ function App() {
   const [user, setUser] = useState("")
   const [users, setUsers] = useState([])
   const [isLoggedIn, setisLoggedIn] = useState(false)
-  // const [currentUserListings, setCurrentUserListings] = useState([]);
   
   const admin = {
     username: "bluecloud",
@@ -52,12 +51,19 @@ function App() {
     }
   }
 
+  function handleLogOut(e) {
+    if (e.target.value == "logout") {
+      setisLoggedIn(false)
+      navigate('/login')
+    } 
+    // else if e.target.value == "user" => profolio?
+  }
+
   let currentUserListings = users.filter(user => user.username === admin.username).flatMap(listing=>listing.listings)
-  // console.log(currentUserListings)
 
   return (
       <div className="App">
-          <Nav />
+          <Nav isLoggedIn={isLoggedIn} handleLogOut={handleLogOut} username={admin.username}/>
           <Filter onHandleFilter={onHandleFilter} />
           <Routes>
             <Route
