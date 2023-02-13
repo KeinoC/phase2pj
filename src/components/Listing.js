@@ -9,7 +9,11 @@ function Listing({
 	tag2,
 	tag3,
 	tag4,
-}) {
+}) 
+
+
+
+{
 	return (
 		<div className="listing-container">
 			<div className="listing-image-container">
