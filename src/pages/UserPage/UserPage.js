@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Listing from "../../components/Listing.js";
 ////setting state for if user is logged in or not
 
-function UserPage() {
+function UserPage( {currentUserListings, username} ) {
 
     const [featureCount, setFeatureCount] = useState(4);
     const [myListCount, setMyListCount] = useState(4);
@@ -15,6 +15,7 @@ function UserPage() {
         e.preventDefault();
         setFeatureCount(parseInt(e.target.value));
     }
+
 
     // const splicedFeaturedArray = [...listing].splice(0, featureCount);
     // //listingArray is the original gallery.
@@ -68,6 +69,8 @@ function UserPage() {
     //     );
     // });
 
+
+
     return (
         <div>
             <div className="featured-container">
@@ -88,6 +91,7 @@ function UserPage() {
                 </select>
                 {/* {myListings} */}
             </div>
+            {currentUserListings.map(listing => <Listing key={listing.itemname} listing={listing} username={username}/>)}
         </div>
     );
 }

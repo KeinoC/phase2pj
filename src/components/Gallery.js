@@ -16,20 +16,12 @@ function Gallery({user, filter}) {
 	return (
 
 		filterResults.map(listing => 
-			<div>
 			<Listing
 				key={listing.itemname}
 				listing={listing}
 				username={username}
 				filter={filter}
 			/>
-			<UserPage				
-				key={listing.itemname}
-				listing={listing}
-				username={username}
-				filter={filter}	
-			/>
-			</div>
 		))
 }
 

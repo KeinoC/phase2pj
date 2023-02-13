@@ -19,15 +19,15 @@ function App() {
 
 
   const navigate = useNavigate()
-    const [listingsArray, setListings] = useState([]);
   const [filter, setFilter] = useState("All")
   const [user, setUser] = useState("")
   const [users, setUsers] = useState([])
-  const [isLoggedIn, setisLoggedIn] = useState(null)
+  const [isLoggedIn, setisLoggedIn] = useState(false)
+  // const [currentUserListings, setCurrentUserListings] = useState([]);
   
   const admin = {
-    username: "admin",
-    password: "admin"
+    username: "bluecloud",
+    password: "123"
   }
 
   useEffect(() => {
@@ -52,26 +52,27 @@ function App() {
     }
   }
 
-        
+  let currentUserListings = users.filter(user => user.username === admin.username).flatMap(listing=>listing.listings)
+  // console.log(currentUserListings)
 
-    return (
-        <div className="App">
-            <Nav />
-            <Filter onHandleFilter={onHandleFilter} />
-            <Routes>
+  return (
+      <div className="App">
+          <Nav />
+          <Filter onHandleFilter={onHandleFilter} />
+          <Routes>
             <Route
-					exact
-					path="/"
-					element={<Home users={users} filter={filter}/>}
-				/>
-				<Route path="/user" element={<UserPage users={users} />} />
+              exact
+              path="/"
+              element={<Home users={users} filter={filter}/>}
+            />
+            <Route exact path="/user" element={<UserPage currentUserListings={currentUserListings} username={admin.username} />} />
 
-                <Route path="/cart" element={<Cart />} />
+            <Route path="/cart" element={<Cart />} />
 
-                <Route path="/login" element={<Login onLogin={onLogin} />} />
-            </Routes>
-        </div>
-    );
+            <Route path="/login" element={<Login onLogin={onLogin} />} />
+          </Routes>
+      </div>
+  );
 }
 
 export default App;

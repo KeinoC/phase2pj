@@ -10,9 +10,9 @@ function Nav() {
 
 	return (
 		<div>
-			<NavLink exact to="/" style={{ marginRight: "10px" }}>Home</NavLink>
-			<NavLink exact to="/cart" onClick={handleCartClick} style={{ marginRight: "10px" }}>Cart</NavLink>
-			<NavLink exact to="/login" style={{ marginRight: "10px" }}>Login</NavLink>
+			<NavLink to="/" style={{ marginRight: "10px" }}>Home</NavLink>
+			<NavLink to="/cart" onClick={handleCartClick} style={{ marginRight: "10px" }}>Cart</NavLink>
+			<NavLink to="/login" style={{ marginRight: "10px" }}>Login</NavLink>
 		</div>
 	);
 }
