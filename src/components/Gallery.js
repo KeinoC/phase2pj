@@ -1,4 +1,5 @@
 import Listing from "./Listing";
+import UserPage from "../pages/UserPage/UserPage.js";
 
 function Gallery({user, filter}) {
 	const {id, username, password, likedtags, likedcategory, listings} = user	
@@ -15,12 +16,20 @@ function Gallery({user, filter}) {
 	return (
 
 		filterResults.map(listing => 
+			<div>
 			<Listing
 				key={listing.itemname}
 				listing={listing}
 				username={username}
 				filter={filter}
 			/>
+			<UserPage				
+				key={listing.itemname}
+				listing={listing}
+				username={username}
+				filter={filter}	
+			/>
+			</div>
 		))
 }
 

@@ -16,33 +16,10 @@ import Login from "./pages/Login.js";
 import UserPage from "./pages/UserPage/UserPage.js";
 
 function App() {
-//<<<<<<< userpage
-    const navigate = useNavigate();
 
-    const [listingsArray, setListings] = useState([]);
-    const [filter, setFilter] = useState("All");
-    const [user, setUser] = useState("");
-    const [isLoggedIn, setisLoggedIn] = useState(null);
-
-    const admin = {
-        username: "admin",
-        password: "admin",
-    };
-
-    useEffect(() => {
-        fetch("http://localhost:3200/listing")
-            .then((response) => response.json())
-            .then((data) => setListings(data));
-    }, []);
-
-    function onHandleFilter(prevFilter) {
-        console.log(prevFilter);
-        setFilter(prevFilter);
-    }
-=======
 
   const navigate = useNavigate()
-
+    const [listingsArray, setListings] = useState([]);
   const [filter, setFilter] = useState("All")
   const [user, setUser] = useState("")
   const [users, setUsers] = useState([])
@@ -75,57 +52,19 @@ function App() {
     }
   }
 
-  return (
-    <div className="App">
-      <Nav />
-      <Filter onHandleFilter={onHandleFilter} />
-      <Routes>
-				<Route
-					exact
-					path="/"
-					element={<Home users={users} filter={filter}/>}
-				/>
-				<Route path="/user" element={<UserPage />} />
         
-// >>>>>>> main
-
-    function onLogin(loggedUser) {
-        if (
-            loggedUser.username === admin.username &&
-            loggedUser.password === admin.password
-        ) {
-            setUser(loggedUser);
-            setisLoggedIn(!isLoggedIn);
-            navigate("/user");
-        } else {
-            console.log("Login Failed");
-        }
-    }
-
-    const filterResults = listingsArray?.filter((listing) => {
-        if (filter === "All") {
-            return listing;
-        } else {
-            return listing.category === filter;
-        }
-    });
 
     return (
         <div className="App">
             <Nav />
             <Filter onHandleFilter={onHandleFilter} />
             <Routes>
-                <Route
-                    exact path="/" /*possible error for DOM*/
-                    element={<Home listingsArray={listingsArray} />}
-                />
-                <Route 
-                    path="/user" 
-                    element={<UserPage listingsArray = {listingsArray}/>} />
-                <Route
-                    path="/gallery"
-                    element={<Gallery listingsArray={filterResults} />}
-                />
+            <Route
+					exact
+					path="/"
+					element={<Home users={users} filter={filter}/>}
+				/>
+				<Route path="/user" element={<UserPage users={users} />} />
 
                 <Route path="/cart" element={<Cart />} />
 
