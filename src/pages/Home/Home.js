@@ -1,5 +1,7 @@
 import React from "react";
 import Gallery from "../../components/Gallery";
+import { Route } from "react-router-dom";
+
 
 /**
  * Home Component - This component displays a Gallery component with a listingsArray prop passed down to it
@@ -10,11 +12,19 @@ import Gallery from "../../components/Gallery";
  * @returns {JSX.Element} - A JSX component that displays a Gallery with the listingsArray prop
  */
 
-const Home = ({ listingsArray }) => {
+function Home ({ users, filter}){
 	return (
-		<>
-			<Gallery listingsArray={listingsArray} />
-		</>
+		<div>
+			{
+				users.map(user => 
+					<Gallery key={user.id} 
+							user={user}
+							filter={filter}
+					/>
+				)
+			}
+			
+		</div>
 	);
 };
 
