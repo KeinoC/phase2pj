@@ -2,7 +2,7 @@ import { NavLink, useNavigate  } from "react-router-dom";
 
 function Nav( {isLoggedIn, handleLogOut, username} ) {
 
-	console.log(isLoggedIn)
+	// console.log(isLoggedIn)
 
 	const history = useNavigate();
 

@@ -15,7 +15,7 @@ function Gallery({user, filter}) {
 
 	return (
 
-		filterResults.map(listing => 
+		filterResults?.map(listing => 
 			<Listing
 				key={listing.itemname}
 				listing={listing}

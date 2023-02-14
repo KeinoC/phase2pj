@@ -1,70 +1,67 @@
 {
-  "users" : [
+  "users": [
     {
-    "id" : 1,
-    "username" : "bluecloud",
-    "password" : "123",
-    "likedtags" : {
-        "modern" : 5,
-        "colorful" : 2,
-        "Space" : 3
-        },
-    "likedcategory" : {
-        "pottery" : 1,
-        "painting": 2,
-        "sculptures" : 7
-        },
-    "listings" : [
-      {
-      "id" : 1,
-      "itemname" : "Windy Day",
-      "image": "https://i.etsystatic.com/31774357/r/il/97f424/3682780536/il_fullxfull.3682780536_9c3w.jpg",
-      "category" : "Painting",
-      "description" : "A really nice Sculpture",
-      "tag1" : "modern",
-      "tag2" : "landscape",
-      "tag3" : "movement",
-      "tag4" : "harmony"
+      "id": 1,
+      "username": "bluecloud",
+      "password": "123",
+      "likedtags": {
+        "modern": 5,
+        "colorful": 2,
+        "Space": 3
       },
-      {
-        "id" : 2,
-        "itemname" : "Sunny Day",
-        "image": "https://i.etsystatic.com/31774357/r/il/97f424/3682780536/il_fullxfull.3682780536_9c3w.jpg",
-        "category" : "Pottery",
-        "description" : "A really nice Sculpture",
-        "tag1" : "modern",
-        "tag2" : "landscape",
-        "tag3" : "movement",
-        "tag4" : "harmony"
+      "likedcategory": {
+        "pottery": 1,
+        "painting": 2,
+        "sculptures": 7
+      },
+      "listings": [
+        {
+          "itemname": "Windy Day",
+          "image": "https://i.etsystatic.com/31774357/r/il/97f424/3682780536/il_fullxfull.3682780536_9c3w.jpg",
+          "category": "Painting",
+          "description": "A really nice Sculpture",
+          "tag1": "modern",
+          "tag2": "landscape",
+          "tag3": "movement",
+          "tag4": "harmony"
+        },
+        {
+          "itemname": "Sunny Day",
+          "image": "https://i.etsystatic.com/31774357/r/il/97f424/3682780536/il_fullxfull.3682780536_9c3w.jpg",
+          "category": "Pottery",
+          "description": "A really nice Sculpture",
+          "tag1": "modern",
+          "tag2": "landscape",
+          "tag3": "movement",
+          "tag4": "harmony"
         }
-    ]
+      ]
     },
     {
-      "id" : 2,
-      "username" : "test",
-      "password" : "123",
-      "likedtags" : {
-          "modern" : 5,
-          "colorful" : 2,
-          "Space" : 3
-          },
-      "likedcategory" : {
-          "pottery" : 1,
-          "painting": 2,
-          "sculptures" : 7
-          },
-      "listings" : [
-          {
-          "id" : 1,
-          "itemname" : "Cloudy Day",
+      "id": 2,
+      "username": "test",
+      "password": "123",
+      "likedtags": {
+        "modern": 5,
+        "colorful": 2,
+        "Space": 3
+      },
+      "likedcategory": {
+        "pottery": 1,
+        "painting": 2,
+        "sculptures": 7
+      },
+      "listings": [
+        {
+          "itemname": "Cloudy Day",
           "image": "https://i.etsystatic.com/31774357/r/il/97f424/3682780536/il_fullxfull.3682780536_9c3w.jpg",
-          "category" : "Sculpture",
-          "description" : "A really nice Sculpture",
-          "tag1" : "modern",
-          "tag2" : "landscape",
-          "tag3" : "movement",
-          "tag4" : "harmony"
-          }
+          "category": "Sculpture",
+          "description": "A really nice Sculpture",
+          "tag1": "modern",
+          "tag2": "landscape",
+          "tag3": "movement",
+          "tag4": "harmony"
+        }
       ]
     }
   ]

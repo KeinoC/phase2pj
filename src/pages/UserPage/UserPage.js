@@ -1,8 +1,9 @@
 import React, { useState } from "react";
+import AddListingForm from "../../components/AddListingForm.js";
 import Listing from "../../components/Listing.js";
 ////setting state for if user is logged in or not
 
-function UserPage( {currentUserListings, username} ) {
+function UserPage( {currentUserListings, username, onAddListing, user={user}} ) {
 
     const [featureCount, setFeatureCount] = useState(4);
     const [myListCount, setMyListCount] = useState(4);
@@ -73,6 +74,7 @@ function UserPage( {currentUserListings, username} ) {
 
     return (
         <div>
+            <AddListingForm  onAddListing={onAddListing} user={user}/>
             <div className="featured-container">
                 <select onChange={handleFeatureCount} value={featureCount}>
                     <option value="4">4</option>
