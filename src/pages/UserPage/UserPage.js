@@ -4,34 +4,23 @@ import Listing from "../../components/Listing.js";
 ////setting state for if user is logged in or not
 
 
-function UserPage( {currentUserListings, username, users, favoriteTag} ) {
-
-function UserPage( {currentUserListings, username, onAddListing, user={user}} ) {
-
-
-
-let array = []
-function test () {
-    for (let i = 0; i < users.length; i++) {
-        const user = users[i]
-        const userListings = user?.listings
-        for (let j = 0; j < userListings.length; j++) {
-            const listing = userListings[j]
-            if (listing.tag1 === favoriteTag || listing.tag2 ===favoriteTag || listing.tag3 ===favoriteTag || listing.tag4 ===favoriteTag) {
-                array.push(listing)
+function UserPage( {currentUserListings, username, onAddListing, users, user, favoriteTag} ) {
+    
+    let array = []
+    function test () {
+        for (let i = 0; i < users.length; i++) {
+            const userX = users[i]
+            const userListings = userX.listings
+            for (let j = 0; j < userListings.length; j++) {
+                const listing = userListings[j]
+                if (listing.tag1 === favoriteTag || listing.tag2 ===favoriteTag || listing.tag3 ===favoriteTag || listing.tag4 ===favoriteTag) {
+                    array.push(listing)
+                }
             }
-        }
-    }   
-}
+        }   
+    }
 
-test()
-
-
-
-
-
-
-// console.log(favoriteListings)
+    test()
 
     const [featureCount, setFeatureCount] = useState(4);
     const [myListCount, setMyListCount] = useState(4);
@@ -48,8 +37,6 @@ test()
 
     const renderedFeaturedArray = [...array].splice(0, featureCount);
     const renderedMyListingsArray = [...currentUserListings].splice(0, myListCount);
-
-console.log(renderedFeaturedArray, renderedMyListingsArray)
 
 
     return (

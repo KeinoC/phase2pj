@@ -1,6 +1,5 @@
 
 function Listing({ listing }) {	
-console.log(listing);
 	return <div className="listing-container" key={listing.id}>
 		<div className="listing-image-container">
 			<img src={listing.image} alt={listing.itemname} className="listing-image" />
