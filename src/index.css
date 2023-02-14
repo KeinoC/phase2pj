@@ -55,6 +55,12 @@ align-items: flex-end;
   height: 20rem;
 }
 
+.my-listings-container {
+  width: 80%;
+  margin-left: 5%;
+  justify-self: center;
+}
+
 
 
 

@@ -23,7 +23,9 @@ function App() {
   const [user, setUser] = useState("")
   const [users, setUsers] = useState([])
   const [isLoggedIn, setisLoggedIn] = useState(false)
-  
+  const [favTag, setFavTag] = useState()
+
+
   const admin = {
     username: "bluecloud",
     password: "123"
@@ -41,14 +43,17 @@ function App() {
   }
 
   function onLogin(loggedUser) {
+    console.log(loggedUser)
     if (loggedUser.username === admin.username && loggedUser.password === admin.password) {
       setUser(loggedUser)
       setisLoggedIn(!isLoggedIn)
       navigate('/user')
       
+      
     }else {
       console.log("Login Failed")
     }
+    // console.log(user)
   }
 
   function handleLogOut(e) {
@@ -59,7 +64,43 @@ function App() {
     // else if e.target.value == "user" => profolio?
   }
 
-  let currentUserListings = users.filter(user => user.username === admin.username).flatMap(listing=>listing.listings)
+  // let currentUserListings = users.filter(user => user.username === admin.username).flatMap(listing=>listing.listings)
+  const currentUserListings = users.find(user => user.username === admin.username)?.listings ?? []
+// console.log(users.likedtags)
+//   setFavTag(getMax(currentUserLikedTags[0]))
+// useEffect(() => {
+
+// }, [])
+
+
+
+
+
+const currentUserLikedTags = users.find(user => user.username === admin.username)?.likedtags ?? []
+
+console.log(currentUserLikedTags)
+
+  const getMax = object => {
+    let max = Math.max(...Object.values(object))
+    return Object.keys(object).filter(key => object[key]==max)
+  }
+
+console.log((getMax(currentUserLikedTags)[0]))
+const test = ((getMax(currentUserLikedTags)[0]))
+
+console.log(users)
+
+
+// setFavTag(test)
+// console.log(favTag)
+
+  
+
+
+
+
+// likedtags
+  // likedcategory
 
   return (
       <div className="App">
@@ -75,7 +116,7 @@ function App() {
 
             <Route path="/cart" element={<Cart />} />
 
-            <Route path="/login" element={<Login onLogin={onLogin} />} />
+            <Route path="/login" element={<Login onLogin={onLogin} setUser={setUser} />} />
           </Routes>
       </div>
   );
