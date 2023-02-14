@@ -79,15 +79,17 @@ function App() {
               path="/"
               element={<Home users={users} filter={filter} onHandleFilter={onHandleFilter}/>}
             />
-            <Route exact 
-                   path="/user" 
-                   element={
-                      <UserPage currentUserListings={currentUserListings} 
-                                username={admin.username}
-                                onAddListing={onAddListing}
-                                user={user} />
-                          } 
-            />
+            {isLoggedIn ?
+              <Route exact 
+                    path="/user" 
+                    element={
+                        <UserPage currentUserListings={currentUserListings} 
+                                  username={admin.username}
+                                  onAddListing={onAddListing}
+                                  user={user} />
+                    } 
+              /> : null
+            }
 
             <Route path="/cart" element={<Cart />} />
 
