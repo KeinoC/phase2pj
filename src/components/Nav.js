@@ -14,20 +14,35 @@ function Nav({ isLoggedIn, handleLogOut, username }) {
             </NavLink>
 
             {isLoggedIn ? (
-                <select onChange={handleLogOut}>
-                    <option value="user">{username}</option>
-                    <option value="logout" style={{ marginRight: "10px" }}>
-                        Log out
-                    </option>
-                    {/* <option onClick={handleLogOut} style={{ marginRight: "10px" }}>Log out</option> */}
-                </select>
+                <>  
+                    <NavLink to="/user" style={{ marginRight: "10px" }}>
+                        My Listings
+                    </NavLink>
+                    <NavLink
+                        to="/cart"
+                        onClick={handleCartClick}
+                        style={{ marginRight: "10px" }}>
+                        Cart
+                     </NavLink>
+                    <select onChange={handleLogOut}>
+                        <option value="none" selected disabled hidden>Hi {username}!</option>
+                        <option value="logout" style={{ marginRight: "10px" }}>
+                            Log out
+                        </option>
+                    </select>
+                    
+                </>
+
             ) : (
-                <NavLink to="/login" style={{ marginRight: "10px" }}>
-                    Log In
-                </NavLink>
+                <>
+                    <NavLink to="/login" style={{ marginRight: "10px" }}>
+                        Log In
+                    </NavLink>
+                </>
+                
             )}
 
-            {isLoggedIn ? (
+            {/* {isLoggedIn ? (
                 <NavLink
                     to="/cart"
                     onClick={handleCartClick}
@@ -35,7 +50,7 @@ function Nav({ isLoggedIn, handleLogOut, username }) {
                 >
                     Cart
                 </NavLink>
-            ) : null}
+            ) : null} */}
         </div>
     );
 }

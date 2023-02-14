@@ -8,15 +8,14 @@ import React, { useEffect, useState } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import Nav from "./components/Nav.js";
 import Home from "./pages/Home/Home";
-import Gallery from "./components/Gallery.js";
-import Filter from "./components/Filter.js";
 import Cart from "./pages/Cart.js";
 import Login from "./pages/Login.js";
 
 import UserPage from "./pages/UserPage/UserPage.js";
 
 function App() {
-
+  const prev = window.localStorage.getItem('user')
+  if (prev === "undefined" || prev === '') window.localStorage.removeItem('user')
   const localUser = JSON.parse(window.localStorage.getItem('user'))  // get "user" in local storage
 
   const navigate = useNavigate()
@@ -46,30 +45,41 @@ function App() {
     setFilter(prevFilter)
   }
 
-  function onLogin(loggedUser) {
+  function OnLogin(loggedUser) {
+    let currentUser
     if (loggedUser.username === admin.username && loggedUser.password === admin.password) {
-      const currentUser = users.find(user => user.username === admin.username)
+      currentUser = users.find(user => user.username === admin.username)
       window.localStorage.setItem('user', JSON.stringify(currentUser))  // set local storage to "user"
-      setUser(currentUser) // update user
+      // setUser(currentUser) // update user
       setisLoggedIn(!isLoggedIn)
-      navigate('/user')
-      
-      
+      // console.log(currentUser)
+      // console.log(user)
+      navigate('/user')  
     }else {
       console.log("Login Failed")
     }
+    useEffect(() => { setUser(currentUser) }, [])
   }
   function handleLogOut(e) {
-    if (e.target.value == "logout") {
+    if (e.target.value === "logout") {
       window.localStorage.setItem('user', null)  // clear user when log out by setting it to null
       setisLoggedIn(false)
       navigate('/login')
     } 
-    // else if e.target.value == "user" => profolio
+    else if (e.target.value === "user") {
+      navigate('/user')
+    }
   }
 
   function onAddListing(id, updated) {
-    setUsers([...users, updated])
+    console.log(users[0])
+    const oldUser = users.find(u => u.id === updated.id)
+    const index = users.indexOf(oldUser)
+    users[index] =  updated
+    console.log(users[0])
+    setUsers([...users])
+    setUser(updated)
+    window.localStorage.setItem('user', JSON.stringify(updated))  // set local storage to "user"
   }
 
 
@@ -80,11 +90,12 @@ function App() {
 
   const getMax = (object) => {
       let max = Math.max(...Object.values(object));
-      return Object.keys(object).filter((key) => object[key] == max);
+      return Object.keys(object).filter((key) => object[key] === max);
   };
 
     const favoriteTag = getMax(currentUserLikedTags)[0];
     
+    console.log(user)
   return (
       <div className="App">
           <Nav 
@@ -105,15 +116,15 @@ function App() {
                                   favoriteTag = {favoriteTag}
                                   currentUserListings={currentUserListings} 
                                   username={admin.username}
-                                  onAddListing={onAddListing}
-                                  user={user} />
+                                  user={user}
+                                  onAddListing={onAddListing} />
                     } 
               /> : null
             }
 
             <Route path="/cart" element={<Cart />} />
 
-            <Route path="/login" element={<Login onLogin={onLogin} setUser={setUser} />} />
+            <Route path="/login" element={<Login onLogin={OnLogin} setUser={setUser} />} />
           </Routes>
       </div>
   );

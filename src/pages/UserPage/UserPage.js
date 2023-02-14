@@ -5,7 +5,9 @@ import Listing from "../../components/Listing.js";
 
 
 function UserPage( {currentUserListings, username, onAddListing, users, user, favoriteTag} ) {
-    
+    console.log(user)
+    // const user = JSON.parse(window.localStorage.getItem('user'))  // get "user" in local storage
+
     let array = []
     function test () {
         for (let i = 0; i < users.length; i++) {
@@ -37,7 +39,6 @@ function UserPage( {currentUserListings, username, onAddListing, users, user, fa
 
     const renderedFeaturedArray = [...array].splice(0, featureCount);
     const renderedMyListingsArray = [...currentUserListings].splice(0, myListCount);
-
 
     return (
         <div>

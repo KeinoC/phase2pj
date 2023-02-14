@@ -3,7 +3,6 @@ import React, { useState } from "react";
 
 function AddListingForm( {onAddListing, user} ) {
 
-
     const initialValue = {
         itemname: "",
         image: "",
@@ -27,6 +26,7 @@ function AddListingForm( {onAddListing, user} ) {
       e.preventDefault()
 
       const newListing = {
+          artist: user.username,
           itemname: formData.itemname,
           image: formData.image,
           category: formData.category,
@@ -37,18 +37,23 @@ function AddListingForm( {onAddListing, user} ) {
           tag4: formData.tag4
       }
 
-      const listings = [...user.listings, newListing]
+      console.log(user.listings)
+      user.listings = [...user.listings, newListing]
+      console.log(user.listings)
+      // const listings = [...user.listings, newListing]
+
       fetch("http://localhost:3200/users/" + user.id, {
-        method: "PATCH",
+        method: "put",
         headers: {"Content-Type": "application/json"},
-        body: JSON.stringify({
-          listings: listings
-        })
+        body: JSON.stringify(user)
       })
       .then(res => res.json())
-      .then(data => onAddListing(user.id, data))
+      .then(data => 
+        // console.log(data)
+        onAddListing(user.id, data)
+        )
 
-    setFormData(initialValue)
+      setFormData(initialValue)
     }
 
 

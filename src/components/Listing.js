@@ -1,6 +1,8 @@
 
 function Listing({ listing }) {	
-	return <div className="listing-container" key={listing.id}>
+
+	return (
+	<div className="listing-container" key={listing.id}>
 		<div className="listing-image-container">
 			<img src={listing.image} alt={listing.itemname} className="listing-image" />
 		</div>
@@ -15,6 +17,7 @@ function Listing({ listing }) {
 			<p>{listing.description}</p>
 		</div>
 	</div >
+	)
 }
 
 export default Listing;
