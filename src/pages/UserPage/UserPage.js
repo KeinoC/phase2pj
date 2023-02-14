@@ -5,7 +5,7 @@ import Listing from "../../components/Listing.js";
 
 
 function UserPage( {currentUserListings, username, onAddListing, users, user, favoriteTag} ) {
-    console.log(user)
+    // console.log(user)
     // const user = JSON.parse(window.localStorage.getItem('user'))  // get "user" in local storage
 
     let array = []

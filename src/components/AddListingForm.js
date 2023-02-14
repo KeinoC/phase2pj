@@ -37,9 +37,9 @@ function AddListingForm( {onAddListing, user} ) {
           tag4: formData.tag4
       }
 
-      console.log(user.listings)
+      // console.log(user.listings)
       user.listings = [...user.listings, newListing]
-      console.log(user.listings)
+      // console.log(user.listings)
       // const listings = [...user.listings, newListing]
 
       fetch("http://localhost:3200/users/" + user.id, {

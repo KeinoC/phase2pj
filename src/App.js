@@ -72,11 +72,11 @@ function App() {
   }
 
   function onAddListing(id, updated) {
-    console.log(users[0])
+    // console.log(users[0])
     const oldUser = users.find(u => u.id === updated.id)
     const index = users.indexOf(oldUser)
     users[index] =  updated
-    console.log(users[0])
+    // console.log(users[0])
     setUsers([...users])
     setUser(updated)
     window.localStorage.setItem('user', JSON.stringify(updated))  // set local storage to "user"
@@ -95,7 +95,7 @@ function App() {
 
     const favoriteTag = getMax(currentUserLikedTags)[0];
     
-    console.log(user)
+    // console.log(user)
   return (
       <div className="App">
           <Nav 
