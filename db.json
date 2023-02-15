@@ -1,5 +1,5 @@
 {
-  "users" : [
+  "users": [
     {
     "id" : 1,
     "username" : "bluecloud",
@@ -10,7 +10,7 @@
         "Space" : 3
         },
     "likedcategory" : {
-        "pottery" : 1,
+        "pottery" : 1
         "painting": 2,
         "sculptures" : 7
         },
