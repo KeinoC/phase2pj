@@ -2,7 +2,7 @@ import {useState} from "react"
 import { Navigate } from "react-router-dom";
 
 
-function Login( {onLogin} ) {
+function Login( {onLogin, setUser} ) {
 
     const initialValue = {
         username: '',
@@ -22,14 +22,13 @@ function Login( {onLogin} ) {
 
     function handleSubmit(e) {
         e.preventDefault()
-
+       
         const user = {
             username: formData.username,
             password: formData.password
         }
         onLogin(user)
-        
-
+         setUser("test")
         
         // onLogin(user)
         // history.push("/home")
