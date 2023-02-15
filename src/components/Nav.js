@@ -2,8 +2,6 @@ import { NavLink, useNavigate  } from "react-router-dom";
 
 function Nav( {isLoggedIn, handleLogOut, username} ) {
 
-	// console.log(isLoggedIn)
-
 	const history = useNavigate();
 
 	function handleCartClick() {
