@@ -1,5 +1,7 @@
 import { NavLink, useNavigate } from "react-router-dom";
 
+
+
 function Nav({ isLoggedIn, handleLogOut, username }) {
     const history = useNavigate();
 
@@ -8,7 +10,7 @@ function Nav({ isLoggedIn, handleLogOut, username }) {
     }
 
     return (
-        <div>
+        <div id="navbar">
             <NavLink to="/" style={{ marginRight: "10px" }}>
                 Home
             </NavLink>
@@ -24,8 +26,8 @@ function Nav({ isLoggedIn, handleLogOut, username }) {
                         style={{ marginRight: "10px" }}>
                         Cart
                      </NavLink>
-                    <select onChange={handleLogOut}>
-                        <option value="none" selected disabled hidden>Hi {username}!</option>
+                    <select defaultValue="default" onChange={handleLogOut}>
+                        <option value="default" disabled >Hi {username}!</option>
                         <option value="logout" style={{ marginRight: "10px" }}>
                             Log out
                         </option>

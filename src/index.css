@@ -13,7 +13,9 @@ body {
   color: rgb(58, 68, 72);
   background: whitesmoke;
   background: white;
+  font-family: sans-serif;
 }
+
 
 ul {
   list-style-type: none;
@@ -24,12 +26,18 @@ li{
   margin: .5rem;
 }
 
+p {
+  margin: 5px;
+}
 
 
 .listing-container {
   display: inline-block;
   width: 15rem;
+  height: 25rem;
   margin: 1rem;
+  vertical-align: top;
+  overflow: hidden;
   /* border-style: solid;
   border-width: .3rem; */
   border-radius: .5rem;
@@ -41,18 +49,38 @@ li{
 }
 
 
+.search-bar {
+  display: inline-block;
+
+}
+
+.filter {
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.homepage-filters {
+  margin-top: 20px;
+}
+
 .listing-image {
 display:flex;
 width: 15rem;
-height: auto;
-
+height: 15rem;
+object-fit: cover;
 align-items: flex-end;
 }
 
+.new-listing-form {
+  text-align: center;
+}
 
-.listing-image-container {
-  width: 13rem;
-  height: 20rem;
+.add-listing-btn {
+  margin-top: 40px;
+}
+
+.listing-details {
+  padding: 8px;
 }
 
 .my-listings-container, .featured-container {
@@ -62,6 +90,63 @@ align-items: flex-end;
 }
 
 
+.my-listings-title, .my-favourite {
+  text-align: left;
+}
+
+.home-container {
+  margin: 0 30px;
+  text-align: center;
+}
 
 
 
+.add-new-form {
+  text-align: center;
+  margin: 24px 50px 12px;
+}
+
+.new-listing-form input[type=text]{
+  width: 50%;
+  padding: 16px 8px;
+  margin: 8px 40px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  background-color: #8ebf42;
+  color: white;
+  padding: 14px 0;
+  margin: 10px 0;
+  border: none;
+  cursor: grabbing;
+  width: 50%;
+}
+
+
+#navbar {
+  padding: 2em 4.5em;
+  background-color: aquamarine;
+  vertical-align: middle;
+  text-align: right;
+}
+
+#navbar a {
+  text-decoration: none;
+  padding: 1em;
+}
+
+#navbar a:hover {
+  color: black;
+  text-decoration: underline;
+  background-color: aqua;
+}
+
+h2{
+  margin-top: 30px;
+  text-align:center;
+  font-size:18;
+  color: black;
+}

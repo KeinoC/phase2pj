@@ -21,10 +21,7 @@
           "image": "https://images.squarespace-cdn.com/content/v1/52c4a7bbe4b0f4e69d94616f/1470938099754-4DMHBO56C3U0SYM581MU/3littlebirds_artwork_02_sml.jpg?format=500w",
           "category": "Painting",
           "description": "A really nice Sculpture",
-          "tag1": "modern",
-          "tag2": "landscape",
-          "tag3": "movement",
-          "tag4": "harmony"
+          "tag": "modern"
         },
         {
           "artist": "bluecloud",
@@ -32,32 +29,8 @@
           "image": "https://www.designindaba.com/sites/default/files/node/news/22299/gallery/62fa4e26419207.563552f227d17.jpg",
           "category": "Pottery",
           "description": "A really nice Sculpture",
-          "tag1": "modern",
-          "tag2": "landscape",
-          "tag3": "movement",
-          "tag4": "harmony"
-        },
-        {
-          "artist": "bluecloud",
-          "itemname": "jessy",
-          "image": "https://vignette.wikia.nocookie.net/p__/images/8/88/Jessie_Toy_Story_3.png/revision/latest?cb=20161023024601&path-prefix=protagonist",
-          "category": "",
-          "description": "",
-          "tag1": "",
-          "tag2": "",
-          "tag3": "",
-          "tag4": ""
-        },
-        {
-          "artist": "bluecloud",
-          "itemname": "pikachu",
-          "image": "https://static.wikia.nocookie.net/smosh/images/e/e1/025Pikachu_OS_anime_4.png/revision/latest/scale-to-width-down/400?cb=20140725081329",
-          "category": "test",
-          "description": "test",
-          "tag1": "modern",
-          "tag2": "",
-          "tag3": "",
-          "tag4": ""
+          "tag": "modern"
+
         }
       ]
     },
@@ -83,10 +56,7 @@
           "image": "https://static.boredpanda.com/blog/wp-content/uploads/2019/11/carved-ceramics-sean-forest-roberts-fb42-png__700.jpg",
           "category": "Pottery",
           "description": "A really nice Sculpture",
-          "tag1": "modern",
-          "tag2": "landscape",
-          "tag3": "movement",
-          "tag4": "harmony"
+          "tag": "modern"
         },
         {
           "id": 1,
@@ -95,10 +65,7 @@
           "image": "https://i.pinimg.com/originals/2a/c4/74/2ac47424b23706637f2ed8685d33bbfa.jpg",
           "category": "Pottery",
           "description": "A really nice Sculpture",
-          "tag1": "test",
-          "tag2": "landscape",
-          "tag3": "movement",
-          "tag4": "harmony"
+          "tag": "test"
         },
         {
           "id": 1,
@@ -107,10 +74,7 @@
           "image": "https://ik.imagekit.io/theartling/prod/original_images/Screenshot_2019-07-23_at_3.17.33_PM.png?tr=w-825,h-600,c-at_max,bg-FFFFFF",
           "category": "Pottery",
           "description": "A really nice Sculpture",
-          "tag1": "modern",
-          "tag2": "landscape",
-          "tag3": "movement",
-          "tag4": "harmony"
+          "tag": "modern"
         }
       ]
     },
@@ -136,10 +100,7 @@
           "image": "https://i.pinimg.com/564x/bb/fe/bc/bbfebc44ece8ba2313904f58c8af66f3.jpg",
           "category": "Sculpture",
           "description": "A really nice Sculpture",
-          "tag1": "modern",
-          "tag2": "landscape",
-          "tag3": "movement",
-          "tag4": "shiny"
+          "tag": "modern"
         },
         {
           "id": 1,
@@ -148,10 +109,7 @@
           "image": "https://secure.img1-cg.wfcdn.com/im/09552281/resize-h800-w800%5Ecompr-r85/1640/164066780/Tangled+Table+Object+In+Off+White+Resin.jpg",
           "category": "Sculpture",
           "description": "A really nice Sculpture",
-          "tag1": "modern",
-          "tag2": "landscape",
-          "tag3": "movement",
-          "tag4": "harmony"
+          "tag": "modern"
         }
       ]
     }

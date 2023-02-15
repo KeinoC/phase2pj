@@ -1,5 +1,15 @@
+import {useState} from "react"
+
 
 function Listing({ listing }) {	
+
+	const [like, setLike] = useState(false)
+
+	const toggleLike = like ? "Unlike" : "Like"
+
+	function handleLikeClick() {
+		setLike(!like)
+	}
 
 	return (
 	<div className="listing-container" key={listing.id}>
@@ -8,13 +18,11 @@ function Listing({ listing }) {
 		</div>
 		<div className="listing-details">
 			<h3>{listing.itemname}</h3>
-			<h4>Category: {listing.category}</h4>
-			<h4>Artist: {listing.artist}</h4>
-			<li>{listing.tag1}</li>
-			<li>{listing.tag2}</li>
-			<li>{listing.tag3}</li>
-			<li>{listing.tag4}</li>
+			<p>Category: {listing.category}</p>
+			<p>Artist: {listing.artist}</p>
+			<p>{listing.tag}</p>
 			<p>{listing.description}</p>
+			<button className="like-btn" onClick={(handleLikeClick)}>{toggleLike}</button>
 		</div>
 	</div >
 	)

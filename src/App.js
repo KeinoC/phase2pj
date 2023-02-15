@@ -24,6 +24,7 @@ function App() {
   const [users, setUsers] = useState([])
 
   const [isLoggedIn, setisLoggedIn] = useState(localUser !== "null")
+  const [searchText, setSearchText] = useState("")
 
 
 
@@ -45,6 +46,7 @@ function App() {
     setFilter(prevFilter)
   }
 
+
   function OnLogin(loggedUser) {
     let currentUser
     if (loggedUser.username === admin.username && loggedUser.password === admin.password) {
@@ -60,6 +62,8 @@ function App() {
     }
     useEffect(() => { setUser(currentUser) }, [])
   }
+
+
   function handleLogOut(e) {
     if (e.target.value === "logout") {
       window.localStorage.setItem('user', null)  // clear user when log out by setting it to null
@@ -70,6 +74,7 @@ function App() {
       navigate('/user')
     }
   }
+
 
   function onAddListing(id, updated) {
     // console.log(users[0])
@@ -83,10 +88,16 @@ function App() {
   }
 
 
+  function onSearch(searchInput) {
+    setSearchText(searchInput)
+  }
+
+
   const currentUserListings = users?.find(user => user.username === admin.username)?.listings ?? []
 
-  const currentUserLikedTags =
-      users.find((user) => user.username === admin.username)?.likedtags ?? [];
+  const currentUserLikedTags = users.find((user) => user.username === admin.username)?.likedtags ?? []
+
+  const searchResults = users.filter(user => user.username.toLowerCase().includes(searchText.toLowerCase()))
 
   const getMax = (object) => {
       let max = Math.max(...Object.values(object));
@@ -106,7 +117,7 @@ function App() {
             <Route
               exact
               path="/"
-              element={<Home users={users} filter={filter} onHandleFilter={onHandleFilter}/>}
+              element={<Home users={searchResults} filter={filter} onHandleFilter={onHandleFilter} onSearch={onSearch}/>}
             />
             {isLoggedIn ?
               <Route exact 

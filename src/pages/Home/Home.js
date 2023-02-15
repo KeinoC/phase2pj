@@ -1,8 +1,7 @@
 import React from "react";
 import Gallery from "../../components/Gallery";
 import Filter from "../../components/Filter"
-import { Route } from "react-router-dom";
-
+import SearchBar from "../../components/SearchBar"
 
 /**
  * Home Component - This component displays a Gallery component with a listingsArray prop passed down to it
@@ -13,11 +12,14 @@ import { Route } from "react-router-dom";
  * @returns {JSX.Element} - A JSX component that displays a Gallery with the listingsArray prop
  */
 
-function Home ({ users, filter, onHandleFilter}){
+function Home ({ users, filter, onHandleFilter, onSearch}){
+
 	return (
-		<div>
-			<div>
-			 <Filter onHandleFilter={onHandleFilter} />
+		<div className="home-container">
+			
+			<div className="homepage-filters">
+				<SearchBar onSearch={onSearch}/>
+			 	<Filter onHandleFilter={onHandleFilter} />
 			</div>
          
 

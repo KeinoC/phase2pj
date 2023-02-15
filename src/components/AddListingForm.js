@@ -3,15 +3,15 @@ import React, { useState } from "react";
 
 function AddListingForm( {onAddListing, user} ) {
 
+
+    const [showForm, setShowForm] = useState(false)
+
     const initialValue = {
         itemname: "",
         image: "",
         category: "",
         description: "",
-        tag1: "",
-        tag2: "",
-        tag3: "",
-        tag4: "",
+        tag: ""
     }
 
     const [formData, setFormData] = useState(initialValue)
@@ -31,16 +31,11 @@ function AddListingForm( {onAddListing, user} ) {
           image: formData.image,
           category: formData.category,
           description: formData.category,
-          tag1: formData.tag1,
-          tag2: formData.tag2,
-          tag3: formData.tag3,
-          tag4: formData.tag4
+          tag: formData.tag
       }
 
-      // console.log(user.listings)
       user.listings = [...user.listings, newListing]
-      // console.log(user.listings)
-      // const listings = [...user.listings, newListing]
+
 
       fetch("http://localhost:3200/users/" + user.id, {
         method: "put",
@@ -49,73 +44,60 @@ function AddListingForm( {onAddListing, user} ) {
       })
       .then(res => res.json())
       .then(data => 
-        // console.log(data)
         onAddListing(user.id, data)
         )
 
       setFormData(initialValue)
     }
 
+    function handleClick() {
+      setShowForm(!showForm)
+    }
 
     return (
-        <div className="new-listing-form">
-      <h2>New Listing</h2>
-      <form onSubmit={handleSubmit}>
-        <input 
-          type="text" 
-          name="itemname" 
-          placeholder="item name" 
-          value={formData.itemname}
-          onChange={handleInput}
-        />
-        <input 
-          type="text" 
-          name="image" 
-          placeholder="Image URL" 
-          value={formData.image}
-          onChange={handleInput}/>
-        <input 
-          type="text" 
-          name="category" 
-          placeholder="e.g. pottery, painting, sculptures"
-          value={formData.price}
-          onChange={handleInput} />
-        <input 
-          type="text" 
-          name="description" 
-          placeholder="description"
-          value={formData.description}
-          onChange={handleInput} />
-         <input 
-          type="text" 
-          name="tag1" 
-          placeholder="tag1"
-          value={formData.tag1}
-          onChange={handleInput} />
+    <div className="new-listing-form">
+      <button className="add-listing-btn" onClick={handleClick}>Add New Listing</button>
+      {
+        showForm ?
+
+        <form onSubmit={handleSubmit} className="add-new-form">
           <input 
             type="text" 
-            name="tag2" 
-            placeholder="tag2"
-            value={formData.tag2}
+            name="itemname" 
+            placeholder="item name" 
+            value={formData.itemname}
+            onChange={handleInput}
+          />
+          <input 
+            type="text" 
+            name="image" 
+            placeholder="Image URL" 
+            value={formData.image}
+            onChange={handleInput}/>
+          <input 
+            type="text" 
+            name="category" 
+            placeholder="e.g. pottery, painting, sculptures"
+            value={formData.price}
             onChange={handleInput} />
           <input 
             type="text" 
-            name="tag3" 
-            placeholder="tag3"
-            value={formData.tag3}
+            name="description" 
+            placeholder="description"
+            value={formData.description}
             onChange={handleInput} />
           <input 
-          type="text" f
-          name="tag4" 
-          placeholder="tag4"
-          value={formData.tag4}
-          onChange={handleInput} />
-          
-          
+            type="text" 
+            name="tag" 
+            placeholder="tag"
+            value={formData.tag}
+            onChange={handleInput} />
+            
+          <input type="submit" />
+        </form>
 
-
-        <button type="submit">Add</button>
-      </form>
+        : null
+      }
     </div>
     )
 }

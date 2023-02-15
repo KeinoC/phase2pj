@@ -44,23 +44,32 @@ function UserPage( {currentUserListings, username, onAddListing, users, user, fa
         <div>
             <AddListingForm  onAddListing={onAddListing} user={user}/>
             <div className="featured-container">
-                <select onChange={handleFeatureCount} value={featureCount}>
-                    <option value="4">4</option>
-                    <option value="8">8</option>
-                    <option value="12">12</option>
-                    <option value="16">16</option>
-                </select>
+                <div classname="title-container">
+                    <h2 className="my-favourite">My Favourites</h2>
+                    <select classname="select"  onChange={handleFeatureCount} value={featureCount}>
+                        <option value="4">4</option>
+                        <option value="8">8</option>
+                        <option value="12">12</option>
+                        <option value="16">16</option>
+                    </select>
+                </div>
+                
                 <div>
                 <div>{renderedFeaturedArray.map(listing => <Listing key={listing.itemname} listing={listing}/>)}</div>
                 </div>
             </div>
+
             <div className="my-listings-container">
-                <select onChange={handleMyListCount} value={myListCount}>
-                    <option value="4">4</option>
-                    <option value="8">8</option>
-                    <option value="12">12</option>
-                    <option value="16">16</option>
-                </select>
+                <div classname="title-container">
+                    <h2 className="my-listings-title">My Listings</h2>
+                    <select classname="select" onChange={handleMyListCount} value={myListCount}>
+                        <option value="4">4</option>
+                        <option value="8">8</option>
+                        <option value="12">12</option>
+                        <option value="16">16</option>
+                    </select>
+                </div>
+                
                 <div>{renderedMyListingsArray.map(listing => <Listing key={listing.itemname} listing={listing} username={username}/>)}</div>
             </div>
             
