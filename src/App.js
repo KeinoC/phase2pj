@@ -45,7 +45,8 @@ function App() {
   function onLogin(loggedUser) {
     console.log(loggedUser)
     if (loggedUser.username === admin.username && loggedUser.password === admin.password) {
-      setUser(loggedUser)
+      const currentUser = users.find(user => user.username === admin.username)
+      setUser(currentUser) // update user
       setisLoggedIn(!isLoggedIn)
       navigate('/user')
       
@@ -64,6 +65,15 @@ function App() {
     // else if e.target.value == "user" => profolio?
   }
 
+  function onAddListing(id, updated) {
+    console.log(updated)
+    setUsers([...users, updated])
+  }
+
+
+  const currentUserListings = users?.find(user => user.username === admin.username)?.listings ?? []
+
+  // const currentUserLikesTags = users.find(user => user.username === admin.username)?.likedtags ?? []
   // let currentUserListings = users.filter(user => user.username === admin.username).flatMap(listing=>listing.listings)
   const currentUserListings = users.find(user => user.username === admin.username)?.listings ?? []
 // console.log(users.likedtags)
@@ -105,14 +115,21 @@ console.log(users)
   return (
       <div className="App">
           <Nav isLoggedIn={isLoggedIn} handleLogOut={handleLogOut} username={admin.username}/>
-          <Filter onHandleFilter={onHandleFilter} />
           <Routes>
             <Route
               exact
               path="/"
-              element={<Home users={users} filter={filter}/>}
+              element={<Home users={users} filter={filter} onHandleFilter={onHandleFilter}/>}
             />
-            <Route exact path="/user" element={<UserPage currentUserListings={currentUserListings} username={admin.username} />} />
+            <Route exact 
+                   path="/user" 
+                   element={
+                      <UserPage currentUserListings={currentUserListings} 
+                                username={admin.username}
+                                onAddListing={onAddListing}
+                                user={user} />
+                          } 
+            />
 
             <Route path="/cart" element={<Cart />} />
 
