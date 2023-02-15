@@ -3,6 +3,7 @@ import React, { useState } from "react";
 
 function AddListingForm( {onAddListing, user} ) {
 
+
     const initialValue = {
         itemname: "",
         image: "",
@@ -23,39 +24,29 @@ function AddListingForm( {onAddListing, user} ) {
     }
 
     function handleSubmit(e) {
-    e.preventDefault()
+      e.preventDefault()
 
-    const newListing = {
-        itemname: formData.itemname,
-        image: formData.image,
-        category: formData.category,
-        description: formData.category,
-        tag1: formData.tag1,
-        tag2: formData.tag2,
-        tag3: formData.tag3,
-        tag4: formData.tag4
-    }
+      const newListing = {
+          itemname: formData.itemname,
+          image: formData.image,
+          category: formData.category,
+          description: formData.category,
+          tag1: formData.tag1,
+          tag2: formData.tag2,
+          tag3: formData.tag3,
+          tag4: formData.tag4
+      }
 
-    const listings = [...user.listings, newListing]
-    // console.log(listings)
-    fetch("http://localhost:3200/users/" + user.id, {
-      method: "PATCH",
-      headers: {"Content-Type": "application/json"},
-      body: JSON.stringify({
-        listings: listings
+      const listings = [...user.listings, newListing]
+      fetch("http://localhost:3200/users/" + user.id, {
+        method: "PATCH",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({
+          listings: listings
+        })
       })
-    })
-    .then(res => res.json())
-    .then(data => onAddListing(user.id, data))
-  
-
-    // fetch("http://localhost:3200/users", {
-    //     method: "POST",
-    //     headers: {"Content-Type": "application/json"},
-    //     body: JSON.stringify(newListing)
-    // })
-    // .then(res => res.json())
-    // .then(newObj => onAddListing(newObj))
+      .then(res => res.json())
+      .then(data => onAddListing(user.id, data))
 
     setFormData(initialValue)
     }
