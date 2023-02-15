@@ -3,8 +3,35 @@ import AddListingForm from "../../components/AddListingForm.js";
 import Listing from "../../components/Listing.js";
 ////setting state for if user is logged in or not
 
+
+function UserPage( {currentUserListings, username, users, favoriteTag} ) {
+
 function UserPage( {currentUserListings, username, onAddListing, user={user}} ) {
 
+
+
+let array = []
+function test () {
+    for (let i = 0; i < users.length; i++) {
+        const user = users[i]
+        const userListings = user?.listings
+        for (let j = 0; j < userListings.length; j++) {
+            const listing = userListings[j]
+            if (listing.tag1 === favoriteTag || listing.tag2 ===favoriteTag || listing.tag3 ===favoriteTag || listing.tag4 ===favoriteTag) {
+                array.push(listing)
+            }
+        }
+    }   
+}
+
+test()
+
+
+
+
+
+
+// console.log(favoriteListings)
 
     const [featureCount, setFeatureCount] = useState(4);
     const [myListCount, setMyListCount] = useState(4);
@@ -15,13 +42,14 @@ function UserPage( {currentUserListings, username, onAddListing, user={user}} ) 
     }
     function handleMyListCount(e) {
         e.preventDefault();
-        setFeatureCount(parseInt(e.target.value));
+        setMyListCount(parseInt(e.target.value));
     }
 
 
-    const renderedFeaturedArray = [...currentUserListings].splice(0, featureCount);
-    const renderedMyListingsArray = [...currentUserListings].splice(0, featureCount);
+    const renderedFeaturedArray = [...array].splice(0, featureCount);
+    const renderedMyListingsArray = [...currentUserListings].splice(0, myListCount);
 
+console.log(renderedFeaturedArray, renderedMyListingsArray)
 
 
     return (
@@ -34,18 +62,20 @@ function UserPage( {currentUserListings, username, onAddListing, user={user}} ) 
                     <option value="12">12</option>
                     <option value="16">16</option>
                 </select>
-                <div>{renderedFeaturedArray.map(listing => <Listing key={listing.itemname} listing={listing} username={username}/>)}</div>
+                <div>
+                <div>{renderedFeaturedArray.map(listing => <Listing key={listing.itemname} listing={listing}/>)}</div>
+                </div>
             </div>
             <div className="my-listings-container">
-                <select onChange={handleMyListCount} value={featureCount}>
+                <select onChange={handleMyListCount} value={myListCount}>
                     <option value="4">4</option>
                     <option value="8">8</option>
                     <option value="12">12</option>
                     <option value="16">16</option>
                 </select>
-                
+                <div>{renderedMyListingsArray.map(listing => <Listing key={listing.itemname} listing={listing} username={username}/>)}</div>
             </div>
-            <div>{renderedMyListingsArray.map(listing => <Listing key={listing.itemname} listing={listing} username={username}/>)}</div>
+            
         </div>
     );
 }
