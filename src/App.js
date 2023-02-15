@@ -17,13 +17,19 @@ import UserPage from "./pages/UserPage/UserPage.js";
 
 function App() {
 
+  const localUser = window.localStorage.getItem('user')  // get "user" in local storage
 
   const navigate = useNavigate()
   const [filter, setFilter] = useState("All")
-  const [user, setUser] = useState("")
+  const [user, setUser] = useState(localUser)
   const [users, setUsers] = useState([])
+
+  const [isLoggedIn, setisLoggedIn] = useState(localUser !== "null")
+  
+
   const [isLoggedIn, setisLoggedIn] = useState(false)
   const [favTag, setFavTag] = useState()
+
 
 
   const admin = {
@@ -46,6 +52,7 @@ function App() {
     console.log(loggedUser)
     if (loggedUser.username === admin.username && loggedUser.password === admin.password) {
       const currentUser = users.find(user => user.username === admin.username)
+      window.localStorage.setItem('user', JSON.stringify(currentUser))  // set local storage to "user"
       setUser(currentUser) // update user
       setisLoggedIn(!isLoggedIn)
       navigate('/user')
@@ -59,6 +66,7 @@ function App() {
 
   function handleLogOut(e) {
     if (e.target.value == "logout") {
+      window.localStorage.setItem('user', null)  // clear user when log out by setting it to null
       setisLoggedIn(false)
       navigate('/login')
     } 
@@ -121,15 +129,17 @@ console.log(users)
               path="/"
               element={<Home users={users} filter={filter} onHandleFilter={onHandleFilter}/>}
             />
-            <Route exact 
-                   path="/user" 
-                   element={
-                      <UserPage currentUserListings={currentUserListings} 
-                                username={admin.username}
-                                onAddListing={onAddListing}
-                                user={user} />
-                          } 
-            />
+            {isLoggedIn ?
+              <Route exact 
+                    path="/user" 
+                    element={
+                        <UserPage currentUserListings={currentUserListings} 
+                                  username={admin.username}
+                                  onAddListing={onAddListing}
+                                  user={user} />
+                    } 
+              /> : null
+            }
 
             <Route path="/cart" element={<Cart />} />
 
