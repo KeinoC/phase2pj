@@ -6,6 +6,55 @@ import Listing from "../../components/Listing.js";
 
 function UserPage( {currentUserListings, username, onAddListing, users, user, favoriteTag} ) {
     
+console.log(user?.likedtags)
+
+    const [likeModernCount, updateModernCount] = useState(0)
+    const [likeShinyCount, updateShinyCount] = useState(0)
+
+function handleNewLikes (e) {
+    const newTag = e.target.value
+    if (newTag === "modern") {
+            updateModernCount(newCount => newCount + 1)
+    console.log(newTag, likeModernCount, "favTag:", favoriteTag)
+    } else if (newTag === "shiny") {
+            updateShinyCount(newCount => newCount + 1)
+    console.log(newTag, likeShinyCount, "favTag:", favoriteTag)
+    }
+fetch("http://localhost:3200/users/" + user.id, {
+    method: "PATCH",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({
+    likedtags : {
+        modern: likeModernCount,
+        shiny: likeShinyCount
+    }
+    })
+})
+.then(res => res.json())
+.then(data => console.log(data))
+}
+
+
+
+// const newFavorite = {
+//     itemname: formData.itemname,
+//     image: formData.image,
+//     category: formData.category,
+//     description: formData.category,
+//     tag1: formData.tag1,
+//     tag2: formData.tag2,
+//     tag3: formData.tag3,
+//     tag4: formData.tag4
+// }
+
+
+
+
+
+
+
+
+
     let array = []
     function test () {
         for (let i = 0; i < users.length; i++) {
@@ -50,7 +99,7 @@ function UserPage( {currentUserListings, username, onAddListing, users, user, fa
                     <option value="16">16</option>
                 </select>
                 <div>
-                <div>{renderedFeaturedArray.map(listing => <Listing key={listing.itemname} listing={listing}/>)}</div>
+                <div>{renderedFeaturedArray.map(listing => <Listing handleNewLikes = {handleNewLikes} key={listing.itemname} listing={listing}/>)}</div>
                 </div>
             </div>
             <div className="my-listings-container">

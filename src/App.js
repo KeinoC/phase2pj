@@ -84,6 +84,7 @@ function App() {
   };
 
     const favoriteTag = getMax(currentUserLikedTags)[0];
+    console.log(favoriteTag)
     
   return (
       <div className="App">
