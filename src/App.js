@@ -40,7 +40,15 @@ function App() {
     .then(data => setUsers(data))
   }, [])
 
-  
+  // useEffect (() => {
+  //   if (localUser) {
+  //     fetch(`http://localhost:3200/users/${localUser.id}`)
+  //     .then ( res => res.json())
+  //     .then ((data) => setUser(data))
+  //   }
+  // }, [users])
+
+
   
   function onHandleFilter(prevFilter) {
     setFilter(prevFilter)
@@ -86,6 +94,17 @@ function App() {
     const favoriteTag = getMax(currentUserLikedTags)[0];
     console.log(favoriteTag)
     
+    function handleUpdatedPatch (updatedObj) {
+      const patchedUser = users.map((u) => {
+        if (u.id === updatedObj.id ) {
+          return updatedObj
+        } else {
+          return u
+        }
+      })
+      setUsers(patchedUser)
+    }
+
   return (
       <div className="App">
           <Nav 
@@ -102,7 +121,9 @@ function App() {
               <Route exact 
                     path="/user" 
                     element={
-                        <UserPage users = {users}
+                        <UserPage 
+                                  handleUpdatedPatch={handleUpdatedPatch}
+                                  users = {users}
                                   favoriteTag = {favoriteTag}
                                   currentUserListings={currentUserListings} 
                                   username={admin.username}

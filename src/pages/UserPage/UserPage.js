@@ -4,9 +4,10 @@ import Listing from "../../components/Listing.js";
 ////setting state for if user is logged in or not
 
 
-function UserPage( {currentUserListings, username, onAddListing, users, user, favoriteTag} ) {
+function UserPage( {currentUserListings, username, onAddListing, users, user, favoriteTag, handleUpdatedPatch} ) {
     
 console.log(user?.likedtags)
+console.log(users)
 
     const [likeModernCount, updateModernCount] = useState(0)
     const [likeShinyCount, updateShinyCount] = useState(0)
@@ -15,25 +16,25 @@ function handleNewLikes (e) {
     const newTag = e.target.value
     if (newTag === "modern") {
             updateModernCount(newCount => newCount + 1)
-    console.log(newTag, likeModernCount, "favTag:", favoriteTag)
+    console.log(newTag, "", likeModernCount, "favTag:", favoriteTag) //modern 9 favTag: modern
+
     } else if (newTag === "shiny") {
             updateShinyCount(newCount => newCount + 1)
     console.log(newTag, likeShinyCount, "favTag:", favoriteTag)
     }
-fetch("http://localhost:3200/users/" + user.id, {
-    method: "PATCH",
-    headers: {"Content-Type": "application/json"},
-    body: JSON.stringify({
-    likedtags : {
-        modern: likeModernCount,
-        shiny: likeShinyCount
-    }
-    })
-})
-.then(res => res.json())
-.then(data => console.log(data))
+// fetch("http://localhost:3200/users/" + user.id, {
+//     method: "PATCH",
+//     headers: {"Content-Type": "application/json"},
+//     body: JSON.stringify({
+//     likedtags : {
+//         modern: likeModernCount,
+//         shiny: likeShinyCount
+//     }
+//     })
+// })
+// .then(res => res.json())
+// .then(data => console.log(data))
 }
-
 
 
 // const newFavorite = {
@@ -99,7 +100,7 @@ fetch("http://localhost:3200/users/" + user.id, {
                     <option value="16">16</option>
                 </select>
                 <div>
-                <div>{renderedFeaturedArray.map(listing => <Listing handleNewLikes = {handleNewLikes} key={listing.itemname} listing={listing}/>)}</div>
+                <div>{renderedFeaturedArray.map(listing => <Listing handleUpdatedPatch={handleUpdatedPatch} handleNewLikes = {handleNewLikes} key={listing.itemname} listing={listing} user = {user} users = {users}/>)}</div>
                 </div>
             </div>
             <div className="my-listings-container">
